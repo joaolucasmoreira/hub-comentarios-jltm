@@ -24,6 +24,13 @@ body {
     margin-bottom: 10px;
 }
 
+.date {
+    font-size: 12px;
+    color: rgb(17, 35, 41);
+    position: absolute;
+    right: 0;
+}
+
 #form-comentario textarea, input {
     display: block;
     color: rgb(17, 35, 41);

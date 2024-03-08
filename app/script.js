@@ -5,9 +5,9 @@ const submitComment = (event) => {
 
     const author = inputAuthor.value;
     const comment = inputComment.value;
+    const date = momentComment()
 
-    data.push({ author: author, comment: comment })
-    console.log(data)
+    data.push({ author: author, comment: comment, date: date})
 
     loadComment()
 }
@@ -26,9 +26,8 @@ const displayComment = () => {
     divFeed.innerHTML = ``
     data.forEach(item => {
         const divDisplay = document.createElement('div');
-        divDisplay.className = 'comentarios'
+        divDisplay.className = 'd-flex text-body-secondary pt-3 position-relative'
         divDisplay.innerHTML = `
-        <div class="d-flex text-body-secondary pt-3">
             <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32"
                 xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32"
                 preserveAspectRatio="xMidYMid slice" focusable="false">
@@ -40,8 +39,17 @@ const displayComment = () => {
                 <strong class="d-block text-gray-dark">${item.author}</strong>
                 ${item.comment}
             </p>
-        </div>
+            <p class="date">
+              ${item.date}
+            </p>
         `
         divFeed.appendChild(divDisplay);
     })
+}
+
+const momentComment = () => {
+    const currentDate = new Date()
+    const options = {day: 'numeric', month: 'short', hour: 'numeric'}; 
+    const date = `${currentDate.toLocaleDateString('pt-BR', options)} hrs`
+    return date
 }
