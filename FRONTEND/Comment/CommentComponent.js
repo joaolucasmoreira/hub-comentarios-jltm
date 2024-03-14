@@ -1,4 +1,6 @@
 import { formatDate } from "../utils";
+import { CommentService } from "../services/comment.services.js"
+import { Comment } from "./models/comment.model.js";
 
 const getInputComment = () =>{
     return {
@@ -29,11 +31,14 @@ const submitComment = (event) => {
     loadComment()
 }
 
-const loadComment = () => {
+const loadComment = async () => {
     // Dados carregados da API
-    if (data) {
-        displayComment(data);
-    }
+    const data = await CommentService.apiGetComment()
+        const comments = data.map(comment => {
+        comment = new Comment(comment.id, comment.author, comment.comment_text)
+        
+    })
+    displayComment(comments);
 }
 
 
@@ -52,10 +57,10 @@ const displayComment = (comments) => {
                     dy=".3em">32x32</text>
             </svg>
             <p class="pb-3 mb-0 small lh-sm border-bottom">
-                <strong class="d-block text-gray-dark">@${item.author}
-                <span class="date-style badge text-bg-secondary">${formatDate(item.date)}</span>
+                <strong class="d-block text-gray-dark">@${item.getAuthor()}
+                <span class="date-style badge text-bg-secondary">${formatDate(item.Created_at())}</span>
                 </strong>
-                ${item.comment}
+                ${item.getComment_text()}
             </p>        
         `
         divFeed.appendChild(divDisplay);

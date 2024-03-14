@@ -8,7 +8,7 @@ const formatDate = (data) =>{
     };
 
     let formattedDate = currentDate.toLocaleDateString('pt-BR',options)
-    return formattedDate.replace(',', ' às') + 'hs';
+    return formattedDate.replace(',', ' às') + 'hrs';
 }
 
 export {formatDate}
