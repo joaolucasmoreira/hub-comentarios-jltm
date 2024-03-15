@@ -1,14 +1,14 @@
 class Comment {
-    constructor(author, comment_text, created_at, updated_at) {
+    constructor(id, author, comment_text, created_at, updated_at) {
     
-        if (this.id !== undefined, this.author !== undefined, this.comment_text !== undefined, this.created_at !== undefined, 
+        if (id !== undefined, author !== undefined, comment_text !== undefined, created_at !== undefined, 
             this.updated_at !== undefined) {
             this.id = id
             this.author = author
             this.comment_text = comment_text
             this.created_at = created_at
             this.updated_at = updated_at
-        } else if (this.author !== undefined, this.comment_text !== undefined) {
+        } else if (author !== undefined, comment_text !== undefined) {
             this.id = null
             this.author = author
             this.comment_text = comment_text
@@ -32,20 +32,25 @@ class Comment {
         return this.author
     }
 
-    setAuthor(author) {
-        this.author = author
+    setAuthor(value) {
+        this.author = value
     }
 
-    getComment() {
+    getComment_text() {
         return this.comment_text
     }
 
-    setComment(comment_text) {
-        this.comment_text = comment_text
+    setComment_text
+    (value) {
+        this.comment_text = value
     }
 
     getCreatedAt() {
         return this.created_at
+    }
+
+    getUpdatedAt() {
+        return this.updated_at
     }
 
 }
