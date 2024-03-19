@@ -26,6 +26,22 @@ db.connect((err) => {
   console.log("Conectado com sucesso!");
 });
 
+server.post('/login', (req, res) => {
+  const { username, password } = req.body;
+
+  db.query("SELECT * FROM user WHERE username = ? AND password = ?", [username, password], (err, result) => {
+    if (err) {
+      res.status(500).json({ success: false, error: err });
+    }
+    if (result.length > 0) {
+      const {id, username, firstName, lastName} = results[0]
+      res.json({success: true, user: {id, username, firstName, lastName} })
+    } else {
+      res.json({success: false, error: "Usuário ou senha inválidos!" })
+    }
+  });
+})
+
 server.get("/comment", (req, res) => {
   db.query("SELECT * FROM comment", (err, result) => {
     if (err) {

@@ -2,6 +2,11 @@ body {
     font-family: Arial, sans-serif;
 }
 
+button {
+    border-radius: 6px;
+    background-color: rgb(255, 219, 194);
+}
+
 .comments {
     text-align: left;
     width: 400px;
@@ -12,6 +17,7 @@ body {
     font-weight: bolder;
     /* border: 3px solid black; */
     border-radius: 10px;
+    transition: all 0.5s ease
 }
 
 .comments *{
@@ -23,9 +29,10 @@ body {
     margin-bottom: 10px;
 }
 
+#login-form,
 #form-comentario {
     width: auto;
-    height: 500px;
+    height: auto;
 }
 
 #form-comentario textarea, input {
@@ -34,6 +41,10 @@ body {
     border-radius: 5px;
     border: 1px solid black;
     background-color: antiquewhite;
+}
+
+#login-form input {
+    margin: 10px 0px;
 }
 
 #form-comentario .btn-submit{
@@ -47,12 +58,18 @@ body {
     padding: 10px auto 0px auto;
 }
 
-#feed {
-    
-}
-
 .date-style{
     display: inline;
     font-size: smaller;
     height: fit-content;
 }
+
+.disabled {
+  display: none;  
+}
+
+.comments.disabled {
+    opacity: 0;
+    pointer-events: none;
+}
+
