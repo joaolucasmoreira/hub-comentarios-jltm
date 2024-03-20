@@ -30,12 +30,12 @@ button {
 }
 
 #login-form,
-#form-comentario {
+#form-comment {
     width: auto;
     height: auto;
 }
 
-#form-comentario textarea, input {
+#form-comment textarea, input {
     display: block;
     color: rgb(17, 35, 41);
     border-radius: 5px;
@@ -47,13 +47,13 @@ button {
     margin: 10px 0px;
 }
 
-#form-comentario .btn-submit{
+#form-comment .btn-submit{
     margin-top: 25px;
     padding: 10px;
     width: 100px;
 }
 
-#form-comentario form{
+#form-comment form{
     margin: 10px auto 0px auto;
     padding: 10px auto 0px auto;
 }

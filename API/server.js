@@ -34,7 +34,7 @@ server.post('/login', (req, res) => {
       res.status(500).json({ success: false, error: err });
     }
     if (result.length > 0) {
-      const {id, username, firstName, lastName} = results[0]
+      const {id, username, firstName, lastName} = result[0]
       res.json({success: true, user: {id, username, firstName, lastName} })
     } else {
       res.json({success: false, error: "Usuário ou senha inválidos!" })

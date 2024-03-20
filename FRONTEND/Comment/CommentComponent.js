@@ -2,6 +2,9 @@ import { darkColors, formatDate, lightColors } from "../utils.js";
 import { CommentService } from "../services/comment.services.js";
 import { Comment } from "./models/comment.model.js";
 import { randomColor } from "../utils.js";
+import { User } from "./models/user.model.js";
+
+let _user = new User();
 
 const getInputComment = () => {
   return {
@@ -34,7 +37,6 @@ const submitComment = (event) => {
 
 const loadComment = () => {
   // Dados carregados da API
-        console.log(CommentService.apiGetComment())
   CommentService.apiGetComment()
     .then((result) => {
       const comments = result.map(
@@ -68,7 +70,9 @@ const displayComment = (comments) => {
                 <title>comentário</title>
                 <rect width="100%" height="100%" fill="${darkColors()}"></rect><text x="50%" y="50%" fill="#007bff"
                     dy=".3em"></text>
-                <text x="35%" y="50%" fill="${lightColors()}"dy=".3em" >${item.getAuthor().charAt(0)}</text>
+                <text x="35%" y="50%" fill="${lightColors()}"dy=".3em" >${item
+      .getAuthor()
+      .charAt(0)}</text>
             </svg>
             <p class="pb-3 mb-0 small lh-sm border-bottom">
                 <strong class="d-block text-gray-dark">@${item.getAuthor()}
@@ -90,6 +94,9 @@ const CommentComponent = {
     window.onload = () => {
       loadComment();
     };
+  },
+  params: (usr) => {
+    _user = usr;
   },
 };
 
