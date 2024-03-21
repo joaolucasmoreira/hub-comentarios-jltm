@@ -4,7 +4,7 @@ import { Comment } from "./models/comment.model.js";
 import { randomColor } from "../utils.js";
 import { User } from "./models/user.model.js";
 
-let _user = new User();
+// let _user = new User();
 
 const getInputComment = () => {
   return {
@@ -100,4 +100,4 @@ const CommentComponent = {
   },
 };
 
-export { CommentComponent };
+export { CommentComponent, setInputComment };

@@ -1,3 +1,4 @@
+import { setInputComment } from "../Comment/CommentComponent.js";
 import { User } from "../Comment/models/user.model.js";
 import { LoginService } from "../services/login.services.js";
 
@@ -28,19 +29,19 @@ const handleLogin = (event) => {
   const user = new User(null, username.value, password.value);
 
   LoginService.apiAuthUser(user)
-    .then((result) => {
+    .then(result => {
       console.log(result);
       user.setId(result.id);
       user.setPassword(null)
       user.setFirstName(result.firstName);
-      user.setlastname(result.lastName);
+      user.setLastName(result.lastName);
       handleShowHide();
-    })
-    .catch(`Login inválido. Erro:${error.message}`);
+
+      setInputComment(`${result.firstName} ${result.lastName}`)
+    }).catch((error) => {alert(`Login inválido. Erro:${error.message}`)})
 
   console.log(user);
 
-  handleShowHide();
 };
 
 const LoginComponent = {
