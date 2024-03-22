@@ -33,11 +33,12 @@ const handleLogin = (event) => {
       console.log(result);
       user.setId(result.id);
       user.setPassword(null)
-      user.setFirstName(result.firstName);
-      user.setLastName(result.lastName);
+      user.setFirstName(result.firstname);
+      user.setLastName(result.lastname);
       handleShowHide();
 
-      setInputComment(`${result.firstName} ${result.lastName}`)
+      setInputComment(`${result.firstname} ${result.lastname}`)
+
     }).catch((error) => {alert(`Login inválido. Erro:${error.message}`)})
 
   console.log(user);

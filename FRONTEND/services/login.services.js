@@ -13,6 +13,7 @@ const LoginService = {
           .then((response) => response.json())
           .then((data) => {
             if (data.success) {
+              console.log(data.user)
               resolve(data.user);
             } else {
               reject(data.error);

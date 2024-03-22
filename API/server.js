@@ -34,8 +34,8 @@ server.post('/login', (req, res) => {
       res.status(500).json({ success: false, error: err });
     }
     if (result.length > 0) {
-      const {id, username, firstName, lastName} = result[0]
-      res.json({success: true, user: {id, username, firstName, lastName} })
+      const {id, username, firstname, lastname} = result[0]
+      res.json({success: true, user: {id, username, firstname, lastname} })
     } else {
       res.json({success: false, error: "Usuário ou senha inválidos!" })
     }
@@ -63,6 +63,18 @@ server.get("/user", (req, res) => {
     res.json({ success: true, comment: result });
   });
 });
+
+server.post('/new-comment', (req, res) => {
+  const { author , comment_text } = req.body
+  db.query("INSERT INTO comment (author, comment_text) VALUES (?,?)", [author, comment_text], (err, result) => {
+  if (err) {
+    res.status(500).json({ success: false, error: 'Internal server error' });
+    return
+  }
+  res.json({ success: true});
+})
+})
+
 
 server.listen(PORT, () => {
   console.log(`O server está rodando em http://localhost:${PORT}`);

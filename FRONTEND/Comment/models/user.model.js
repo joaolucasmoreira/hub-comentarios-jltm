@@ -1,11 +1,11 @@
 class User {
   constructor(id, username, password, firstname, lastname) {
     if (
-      (id != undefined,
+      id != undefined,
       username != undefined,
       password != undefined,
       firstname != undefined,
-      lastname != undefined)
+      lastname != undefined
     ) {
       this.id = id;
       this.username = username;
