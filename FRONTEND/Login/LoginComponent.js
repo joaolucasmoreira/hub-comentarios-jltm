@@ -12,12 +12,15 @@ const getLoginInputs = () => {
 const handleShowHide = () => {
   const newCommentTag = document.getElementById("form-comment");
   const loginTag = document.getElementById("login-form");
+  const navTag = document.getElementById("nav-bar");
 
   if (newCommentTag.classList.contains("disabled")) {
     newCommentTag.classList.remove("disabled");
+    navTag.classList.remove("disabled");
     loginTag.classList.add("disabled");
   } else {
     newCommentTag.classList.add("disabled");
+    navTag.classList.add("disabled");
     loginTag.classList.remove("disabled");
   }
 };

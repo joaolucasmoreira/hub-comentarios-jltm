@@ -73,3 +73,18 @@ button {
     pointer-events: none;
 }
 
+#comment-feed {
+    overflow: auto;
+    overflow-y: auto;
+    height: 60vh;
+}
+
+::-webkit-scrollbar {
+    width: 2px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: royalblue;
+    border-radius: 10px;
+}
