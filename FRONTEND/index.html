@@ -21,13 +21,11 @@
                       Usuário
                     </button>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#" id="listData">Meus dados</a></li>
-                      <li><a class="dropdown-item" href="#">Sair</a></li>
+                      <li><a class="dropdown-item" id="listData">Meus dados</a></li>
+                      <li><a class="dropdown-item" id="outLogin">Sair</a></li>
                     </ul>
                   </div>
             </ul>
-
-
         </div>
     </nav>
     <div class="container">
@@ -56,26 +54,29 @@
                     </form>
                 </div>
 
-                <div class="disabled" id="dataUser">
+                <div class="disabled shadow-lg" id="dataUser">
                     <h3>Dados do Usuário</h3>
                     <table class="table">
                         <thead>
                           <tr>
-                            <th scope="col">Nome</th>
-                            <th scope="col">Sobrenome</th>
+                            <th scope="col">Primeiro nome</th>
+                            <th scope="col">Último nome</th>
                             <th scope="col">Username</th>
                             <th scope="col">Senha</th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr id="dataList">
-                            <td scope="row">1</td>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
+                            <td scope="row"></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                           </tr>
                         </tbody>
                       </table>
+                <div class="text-start">
+                      <button id="backButton">Voltar</button>
+                </div>
                 </div>
 
             </div>
