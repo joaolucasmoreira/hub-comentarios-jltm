@@ -25,6 +25,26 @@ const handleShowHide = () => {
   }
 };
 
+const showDataList = () => {
+  const loginTag = document.getElementById("form-comment");
+  const dataUser = document.getElementById("dataUser");
+
+  if (dataUser.classList.contains("disabled")) {
+    loginTag.classList.add("disabled");  
+    dataUser.classList.remove("disabled");
+  } else {
+    loginTag.classList.remove("disabled");  
+    dataUser.classList.add("disabled");
+  }
+    
+}
+
+const showUserData = () => {
+  const listener = document.getElementById("listData")
+  listener.addEventListener("click", showDataList)
+}
+
+
 const handleLogin = (event) => {
   event.preventDefault();
   const { username, password } = getLoginInputs();
@@ -43,7 +63,7 @@ const handleLogin = (event) => {
       setInputComment(`${result.firstname} ${result.lastname}`)
 
     }).catch((error) => {alert(`Login inválido. Erro:${error.message}`)})
-
+    showUserData()
   console.log(user);
 
 };

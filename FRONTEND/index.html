@@ -12,18 +12,17 @@
 
 <body>
     <!-- ADD NEW COMMENT -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary disable" id="nav-bar">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary disabled" id="nav-bar">
         <div class="container-fluid">
             <ul class="navbar-nav">
-                <li class="nav-item"> <img src="../user-svgrepo-com.svg" alt="Bootstrap" width="30" height="24"> </li>
                 <div class="dropdown">
+                    <img src="../user-svgrepo-com.svg" alt="Bootstrap" width="30" height="24">
                     <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Dropdown button
+                      Usuário
                     </button>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">Action</a></li>
-                      <li><a class="dropdown-item" href="#">Another action</a></li>
-                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                      <li><a class="dropdown-item" href="#" id="listData">Meus dados</a></li>
+                      <li><a class="dropdown-item" href="#">Sair</a></li>
                     </ul>
                   </div>
             </ul>
@@ -55,6 +54,28 @@
                         <textarea name="comentario" id="inputComment" cols="30" rows="10" required></textarea>
                         <button type="submit" class="btn-submit">Enviar</button>
                     </form>
+                </div>
+
+                <div class="disabled" id="dataUser">
+                    <h3>Dados do Usuário</h3>
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Sobrenome</th>
+                            <th scope="col">Username</th>
+                            <th scope="col">Senha</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr id="dataList">
+                            <td scope="row">1</td>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                          </tr>
+                        </tbody>
+                      </table>
                 </div>
 
             </div>
