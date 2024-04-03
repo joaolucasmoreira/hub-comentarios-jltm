@@ -1,6 +1,6 @@
-import { setInputComment } from "../Comment/CommentComponent.js";
-import { User } from "../Comment/models/user.model.js";
-import { LoginService } from "../services/login.services.js";
+import { setInputComment } from "../CommentComponent/CommentComponent.js";
+import { User } from "../../models/user.model.js";
+import { LoginService } from "../../services/login.services.js";
 
 const getLoginInputs = () => {
   return {

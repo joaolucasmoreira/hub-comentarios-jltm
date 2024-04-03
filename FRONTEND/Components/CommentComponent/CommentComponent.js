@@ -1,19 +1,21 @@
-import { darkColors, formatDate, lightColors } from "../utils.js";
-import { CommentService } from "../services/comment.services.js";
-import { Comment } from "./models/comment.model.js";
-import { randomColor } from "../utils.js";
-import { User } from "./models/user.model.js";
+import { darkColors, formatDate, lightColors } from "../../utils.js";
+import { CommentService } from "../../services/comment.services.js";
+import { Comment } from "../../models/comment.model.js";
+import { randomColor } from "../../utils.js";
+import { User } from "../../models/user.model.js";
 
 const getInputComment = () => {
+  return document.getElementById("inputComment")
+};
+
+const getInputCommentValue = () => {
   return {
-    author: document.getElementById("inputAuthor"),
-    comment: document.getElementById("inputComment"),
+    comment_text: document.getElementById("inputComment").value,
   };
 };
 
-const setInputComment = (authorValue, commentValue) => {
-  const { author, comment } = getInputComment();
-  author.value = authorValue;
+const setInputComment = (commentValue) => {
+  const { comment } = getInputComment();
   comment.value = commentValue;
 };
 
@@ -22,16 +24,9 @@ const clearCommentField = () => {
   comment.value = ""
 }
 
-const getInputCommentValue = () => {
-  return {
-    author: document.getElementById("inputAuthor").value,
-    comment_text: document.getElementById("inputComment").value,
-  };
-};
-
 const submitComment = (event) => {
   event.preventDefault();
-  const comment = getInputCommentValue();
+  const comment = {comment_text: getInputCommentValue()};
   CommentService.apiPostComment(comment).then(result => {
     alert(result)
     clearCommentField()
