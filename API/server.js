@@ -4,7 +4,6 @@ const mysql = require('mysql2')
 const cors = require('cors')
 require('dotenv').config()
 
-
 const server = express();
 
 server.use(express.json());
@@ -12,19 +11,39 @@ server.use(express.urlencoded({ extended: true }));
 server.use(cors());
 server.use(bodyParser.json());
 
+const CommentRouter = require('./src/services/routes/comment.route.js')
+server.use('/comment', CommentRouter);
+
+const UserRouter = require('./src/services/routes/comment.route.js')
+server.use('/user', UserRouter);
+
 const PORT = 7000;
 
-const db = mysql.createConnection({
-    host: process.env.DB_HOST,
-    port: process.env.DB_PORT,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME
+server.get('/', (req, res) => {
+    res.send(`
+    <h1> API do Sistema HUB-Comentários</h1>
+    <ul>
+    <li> <a href="http://localhost:7000/comment">Get de comentários</a></li>
+    </ul>
+    `)
 })
 
-db.connect((err) => {
-    if (err) return console.log(err);
-    console.log('Conectado com sucesso!');
+server.get('/', (req, res) => {
+    res.send(`
+    <h1> API do Sistema HUB-Comentários</h1>
+    <ul>
+    <li> <a href="http://">Get de comentários</a></li>
+    </ul>
+    `)
+})
+
+server.get('/', (req, res) => {
+    res.send(`
+    <h1> API do Sistema HUB-Comentários</h1>
+    <ul>
+    <li> <a href="http://localhost:7000/comment">Get de comentários</a></li>
+    </ul>
+    `)
 })
 
 server.post('/login', (req, res) => {
@@ -44,11 +63,7 @@ server.post('/login', (req, res) => {
         })
 })
 
-server.get('/user', (req, res) => {
-    db.query('SELECT * FROM user', (err, results) => {
-        res.json({ success: true, user: results });
-    });
-});
+
 
 // LISTAR COMENTÁRIOS
 server.get('/comment', (req, res) => {
