@@ -1,5 +1,5 @@
 import LoginService from "../services/login.service.js";
-import { handleShowHideUser } from "../components/user.component.js";
+import { handleShowHideUser, editUserData } from "../components/user.component.js";
 
 const getLoginInputs = () => {
     return {
@@ -55,7 +55,6 @@ const setUserProfile = () => {
     
     const btnSair0 = document.getElementById('btnSair0');
     btnSair0.addEventListener('click', handleShowHideUser);
-    
 
     const authorProfile = document.getElementById('authorProfile');
     authorProfile.innerHTML = '';
@@ -66,6 +65,8 @@ const setUserProfile = () => {
     
     const btnSair1 = document.getElementById('btnSair1');
     btnSair1.addEventListener('click', handleShowHideUser);
+
+    editUserData()
     
 }
 

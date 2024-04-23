@@ -93,17 +93,26 @@ const handleShowHideUser = () => {
     }
 }
 
-// const listenerToBtnMeusDados = () => {
-//     const btnMeusDados = document.getElementById('btnMeusDados');
-//         btnMeusDados.addEventListener('click', handleShowHideUser);
-// }
+const abilitySwitchDataUser = () => {
+    document.querySelectorAll('#user-data input').forEach(element => {
+        element.readOnly=false
+    });
+}
+
+const editUserData = () => {
+    const userDataTag = document.getElementById('user-data');
+    const btnEditarMDados = document.getElementById("btnEditarMDados");
+
+    btnEditarMDados.addEventListener('click', abilitySwitchDataUser)
+}
 
 const UserComponent = {
     run: () => {
         
         const btnSairMDados = document.getElementById('btnSairMDados');
         btnSairMDados.addEventListener('click', handleShowHideUser);
+       
     }
 }
 
-export { UserComponent, handleShowHideUser }
+export { UserComponent, handleShowHideUser, editUserData}
