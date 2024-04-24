@@ -48,5 +48,6 @@ const CommentController = {
             res.status(500).json({success: false, error: `Internal server error: ${error.message}`})
         });
     },
+    
 }
 module.exports = CommentController;

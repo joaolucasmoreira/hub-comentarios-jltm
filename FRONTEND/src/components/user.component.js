@@ -93,10 +93,25 @@ const handleShowHideUser = () => {
     }
 }
 
-const abilitySwitchDataUser = () => {
+const switchEditButton = (e) => {
+    const btnEditarMDados = document.getElementById("btnEditarMDados"); 
+
+    if(e.target.innerHTML === "Editar"){
+        e.target.innerHTML = "Salvar"
+    } else {
+        e.target.innerHTML = "Editar"
+    }
+}
+
+const abilitySwitchDataUser = (e) => {
     document.querySelectorAll('#user-data input').forEach(element => {
-        element.readOnly=false
+        if (element.readOnly == true) {
+            element.readOnly=false
+        } else {
+            element.readOnly=true
+        }
     });
+    switchEditButton(e)
 }
 
 const editUserData = () => {
