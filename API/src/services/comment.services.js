@@ -41,8 +41,6 @@ const CommentService = {
                     reject('Comentário não encontrado');
                 }
             })
-
-
         })
     },
     getDBCommentsByUserId: (userId) => {
@@ -98,7 +96,7 @@ const CommentService = {
                 resolve();
             })
         })
-    },
-    
+    }
+
 }
 module.exports = CommentService;

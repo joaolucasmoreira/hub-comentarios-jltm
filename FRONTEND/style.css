@@ -126,3 +126,7 @@ header{
     margin-top: 8px;
     margin-right: 6px;
 }
+
+#btnEditUsuario {
+    width: 65%;
+}

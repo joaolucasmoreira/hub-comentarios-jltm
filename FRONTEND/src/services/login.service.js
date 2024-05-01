@@ -15,6 +15,7 @@ const LoginService = {
         .then(response => response.json())
         .then(data => {
           if (data.success) {
+            // document.cookie = `token=${data.token}`;
             sessionStorage.setItem('token', data.token);
             resolve('Usuario logado com sucesso');
           } else {
@@ -26,6 +27,13 @@ const LoginService = {
         });
     });
   },
+  tokenToHeader:(headers) =>{
+    const token = sessionStorage.getItem('token');
+    if (token) {
+      headers['Authorization'] = `Bearer ${token}`;
+    }
+  }
+  ,
   getUserSession: () => {
     const token = sessionStorage.getItem('token');
     if (token) {
@@ -37,6 +45,30 @@ const LoginService = {
         return null;
       }
     }
+  }, updateSessionUserData(user) {
+    return new Promise((resolve, reject) => {
+      const headers = {
+        'Content-Type': 'application/json'
+      }
+      this.tokenToHeader(headers)
+      fetch(`${URL_API}/update`, {
+        method: 'PUT',
+        headers: headers,
+        body: JSON.stringify(user)
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            document.cookie = `token=${data.token}`;
+            sessionStorage.setItem('token', data.token);
+            resolve('Seus dados foram atualizados com sucesso!');
+          } else {
+            reject(data.error);
+          }
+        }).catch(err => {
+          reject(err);
+        });
+    })
   },
   isLoggedIn: () => {
     const token = sessionStorage.getItem('token');
@@ -53,6 +85,27 @@ const LoginService = {
       console.log(error);
     }
 
+  },
+  logout: () => {
+    return new Promise((resolve, reject) => {
+      fetch(`${URL_API}/logout`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            resolve();
+          } else {
+            reject('Erro ao fazer logout. Tente novamente.');
+          }
+        })
+        .catch(error => {
+          reject('Erro na requisição AJAX:', error);
+        });
+    });
   }
 };
 
